@@ -199,6 +199,7 @@ def eventhandler(playing):
                 blackholedrawing = 0
                 blackholebodyiesdrawn = 0
                 fireprobe()
+                screen.blit(background, (0,0))
             elif e.key == K_q and playing:
                 playing = 0
                 bodiesdrawn = 0
@@ -890,7 +891,7 @@ def main():
             #counter = 0
             printvalues()
             printlabels()
-            drawpower(power)
+            #drawpower(power)
             drawbarrel(d)
             printarrow()
             #if counter >= 150:
