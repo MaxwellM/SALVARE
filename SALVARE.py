@@ -53,7 +53,7 @@ flags = RLEACCEL
 
 randombodies = 1                 #The current and only 'working' game mode
 
-fuel = 50                           #How many times you can 'nudge' the probe
+fuel = 500                           #How many times you can 'nudge' the probe
 r2 = 20
 r = 5                               #Beginning radius of the planets, used to calculate collision
 blackholebodyies = 1
@@ -112,9 +112,11 @@ def initiatepygame():
     thrust.set_volume(0.3)
     empty.set_volume(0.2)
     warning.set_volume(1)
-    soundtrack = pygame.mixer.music.load('song11.ogg')
+    # soundtrack = pygame.mixer.music.load('song11.ogg')
     newbutton = pygame.image.load('newbutton.png').convert_alpha()
-    pygame.mixer.music.play(-1)
+    #Let's randomly choose a song.
+    check_if_song_finished()
+    # pygame.mixer.music.play()
     pygame.display.update()
 
 
@@ -737,7 +739,7 @@ def endgame(suicide=0):
     screen.blit(font.render(fourthline, 1, white), (screenx / 2 - 250, screeny / 2 + size * 3))
     pygame.display.update()
     score = 0
-    fuel = 150
+    fuel = 500
 
 #Prints the score type onto the screen while the probe is flying around
 def printvalues():
@@ -851,6 +853,25 @@ def collisioncourse(playing):
         playing = 0
     return playing
 
+#Where we check if the music is still playing
+def check_if_song_finished():
+    if pygame.mixer.music.get_busy():
+        pass
+    else:
+        randSongChoice = randrange(1,5,1)
+        pygame.mixer.music.unload()
+        match randSongChoice:
+            case 1:
+                song1 = pygame.mixer.music.load('song11.ogg')
+            case 2:
+                song2 = pygame.mixer.music.load('Song1.ogg')
+            case 3:
+                song3 = pygame.mixer.music.load('Song2.ogg')
+            case 4:
+                song4 = pygame.mixer.music.load('Song3.ogg')
+            case 5:
+                song5 = pygame.mixer.music.load('Song4.ogg')
+        pygame.mixer.music.play()
 
 #Where the magic happens
 def main():
@@ -885,6 +906,7 @@ def main():
             drawprobepath()
             playing = collisioncourse(playing)
             calculatenewvelocity()
+            check_if_song_finished()
         else:
             pygame.event.post(waitforit())
             #playing = eventhandler(playing)
