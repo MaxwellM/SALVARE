@@ -4,7 +4,7 @@ from math import sqrt, pi, atan2, cos, sin
 from random import randint, randrange, choice
 
 
-os.environ["SDL_VIDEODRIVER"] = "x11"
+# os.environ["SDL_VIDEODRIVER"] = "x11"
 
 # This area is setting up some variables that will be used throughout the program
 
@@ -230,7 +230,7 @@ def drawbodies():
     drawingbodies = 1
     screen.blit(background, (0, 0))
     pygame.display.update()
-    for counter in xrange(numberofbodies):
+    for counter in range(numberofbodies):
         correct = 0
         while not correct:
             ranx = randrange(100, screenx - 200, 100)
@@ -245,7 +245,7 @@ def drawbodies():
             if massofbodies == 50:
                 r = 33
         bodycenters.append((int(ranx), int(rany)))
-        for xx in xrange(r * 2 + 1):
+        for xx in range(r * 2 + 1):
             if massofbodies == 20:
                 blit_alpha(screen, plutoA, (int(ranx - 42), int(rany - 42)), 10)
                 screen.blit(pluto, (int(ranx - 29), int(rany - 30)))
@@ -263,7 +263,7 @@ def drawbodies():
 def blackholebody():
     global blackmass, blackholedrawing, blackholebodyiesdrawn, r2, ranx, rany
     blackholedrawing = 1
-    for counter in xrange(blackholebodyies):
+    for counter in range(blackholebodyies):
         correct = 0
         while not correct:
             ranx = randint(275, screenx - 75)
@@ -274,7 +274,7 @@ def blackholebody():
             if blackmass == 10000:
                 r2 = 95
         bodycenters2.append((int(ranx), int(rany)))
-        for xx in xrange(r2 * 2 + 1):
+        for xx in range(r2 * 2 + 1):
             if blackmass == 10000:
                 screen.blit(blackhole, (int(ranx - 96), int(rany - 96)))
         update2.append((ranx - r2, rany - r2, ranx + r2, rany + r2))
@@ -286,7 +286,7 @@ def blackholebody():
 #Passed to redraw the planets onto the screen when the game is done and the player hits 'r' - needs to be fixed
 def drawonebody(loc, radius, colour):
     xoff, yoff = loc
-    for counter in xrange(radius * 2 + 1):
+    for counter in range(radius * 2 + 1):
         x = -radius + counter + xoff
         y = sqrt(radius ** 2 - (-radius + counter) ** 2)
         pygame.draw.line(screen, colour, (x, y + yoff), (x, -y + yoff))
@@ -456,7 +456,7 @@ def mainmenu():
         line12 = "To begin your piloted mission, press the SPACEBAR. A blank screen with three randomly placed planets will appear. You have the opportunity to change the configuration of these planets by pressing ENTER."
         line13 = "Once you are ready to begin, press the SPACEBAR. You will notice Earth in the top right corner, the area in which the probe is launched."
         line14 = "To direct the probe towards the planets and determine initial velocity of the probe, use the ARROW KEYS. Press the SPACEBAR once you are ready to release the probe."
-        line15 = "Notably,to aim the probe during flight, you can use the ARROW KEYS. Be careful though, aiming the probe uses fuel, and there is only a limited reserve on board. Good luck, and god speed..."
+        line15 = "Notably, to aim the probe during flight, you can use the ARROW KEYS. Be careful though, aiming the probe uses fuel, and there is only a limited reserve on board. Good luck, and god speed..."
         blit_alpha(screen, jupiterA, (142, 642), 128)
         screen.blit(jupiter, (150, 650))
         line16 = "= Heavy weight"
@@ -737,7 +737,7 @@ def endgame(suicide=0):
     screen.blit(font.render(fourthline, 1, white), (screenx / 2 - 250, screeny / 2 + size * 3))
     pygame.display.update()
     score = 0
-    fuel = 50
+    fuel = 150
 
 #Prints the score type onto the screen while the probe is flying around
 def printvalues():
