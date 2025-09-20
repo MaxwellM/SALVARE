@@ -53,7 +53,7 @@ flags = RLEACCEL
 
 randombodies = 1                 #The current and only 'working' game mode
 
-fuel = 500                           #How many times you can 'nudge' the probe
+fuel = 999                           #How many times you can 'nudge' the probe
 r2 = 20
 r = 5                               #Beginning radius of the planets, used to calculate collision
 blackholebodyies = 1
@@ -199,6 +199,7 @@ def eventhandler(playing):
                 blackholedrawing = 0
                 blackholebodyiesdrawn = 0
                 fireprobe()
+                #We draw the background here to paint over the power bar.
                 screen.blit(background, (0,0))
             elif e.key == K_q and playing:
                 playing = 0
@@ -740,7 +741,7 @@ def endgame(suicide=0):
     screen.blit(font.render(fourthline, 1, white), (screenx / 2 - 250, screeny / 2 + size * 3))
     pygame.display.update()
     score = 0
-    fuel = 500
+    fuel = 999
 
 #Prints the score type onto the screen while the probe is flying around
 def printvalues():
