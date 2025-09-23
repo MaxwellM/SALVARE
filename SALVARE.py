@@ -106,7 +106,7 @@ def initiatepygame():
     launch = pygame.mixer.Sound('launch.wav')
     thrust = pygame.mixer.Sound('truster.wav')
     empty = pygame.mixer.Sound('empty.wav')
-    warning = pygame.mixer.Sound('warning.wav')
+    warning = pygame.mixer.Sound('Warning.wav')
     channel4 = pygame.mixer.Channel(4)
     channel5 = pygame.mixer.Channel(5)
     thrust.set_volume(0.3)
